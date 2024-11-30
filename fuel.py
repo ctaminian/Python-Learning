@@ -1,20 +1,41 @@
+def main():
+    while True:
+        try:
+            fraction = input("Fraction: ")
+            percentage = convert(fraction)
+            print(gauge(percentage))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a proper fraction in the format 'X/Y'.")
+        except ZeroDivisionError:
+            print("The denominator cannot be zero.")
 
-while True:
+def convert(fraction):
     try:
-        user_string = input("Fraction: ").split("/")
-        num1 = int(user_string[0])
-        num2 = int(user_string[1])
-        if num1 > num2:
-            continue
-        percentage = round(num1 / num2 * 100)
-    except (ValueError, ZeroDivisionError):
-        pass
-    else:
-        break
+        parts = fraction.split("/")
+        if len(parts) != 2:
+            raise ValueError("Invalid fraction format.")
 
-if percentage >= 99:
-    print("F")
-elif percentage <= 1:
-    print("E")
-else:
-    print(f"{percentage}%")
+        x = int(parts[0])
+        y = int(parts[1])
+
+        if y == 0:
+            raise ZeroDivisionError("Denominator cannot be zero.")
+        if x > y:
+            raise ValueError("Numerator cannot be greater than the denominator.")
+        
+        return round(x / y * 100)
+    
+    except (ValueError, ZeroDivisionError) as e:
+        raise e
+
+def gauge(percentage):
+    if percentage <= 1:
+        return "E"
+    elif percentage >= 99:
+        return "F"
+    else:
+        return f"{percentage}%"
+
+if __name__ == "__main__":
+    main()
