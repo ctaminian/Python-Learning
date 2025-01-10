@@ -128,6 +128,14 @@ print(filter_logs(logs, ip))
 # Output:
 # {"CPU": [45, 56, 78], "Memory": [2.1, 3.5, 4.0]}
 
+cpu_usage = [45, 56, 78]
+memory_usage = [2.1, 3.5, 4.0]
+
+def simulate_metrics(cpu_usage, memory_usage):
+    return {"CPU": cpu_usage, "Memory": memory_usage}
+
+print(simulate_metrics(cpu_usage, memory_usage))
+
 ###############################################################################################################################
 
 # 7. Generate IAM Policy
