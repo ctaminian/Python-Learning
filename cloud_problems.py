@@ -50,6 +50,23 @@ print(check_key(config, key))
 # Input: "MyTestBucket"
 # Output: False
 
+import re
+
+def is_valid_bucket_name(name):
+    if not isinstance(name, str):
+        return False
+    if len(name) < 3 or len(name) > 63:
+        return False
+    if not re.match(r"^[a-z0-9-]+$", name):
+        return False
+    if not name[0].isalnum() or not name[-1].isalnum():
+        return False
+    if re.match(r"^\d+.\d+.\d+.\d+", name):
+        return False
+    return True
+
+print(is_valid_bucket_name("my-test-bucket"))
+
 ###############################################################################################################################
 
 # 4. Calculate Total Cost for EC2 Instances
