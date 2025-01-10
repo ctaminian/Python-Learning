@@ -77,6 +77,18 @@ print(is_valid_bucket_name("my-test-bucket"))
 # usage_hours = {"t2.micro": 100, "t2.large": 50}
 # Output: 5.96
 
+prices = {"t2.micro": 0.0116, "t2.large": 0.0928}  
+usage_hours = {"t2.micro": 100, "t2.large": 50}
+
+def calculate_cost(prices, usage_hours):
+    total_cost = 0
+    for instance, hours in usage_hours.items():
+        if instance in prices:
+            total_cost += prices[instance] * hours
+    return total_cost
+
+print(calculate_cost(prices, usage_hours))
+
 ###############################################################################################################################
 
 # 5. Filter Logs by IP Address
