@@ -178,4 +178,21 @@ print(generate_iam_policy(resource, actions))
 # Output:
 # {"i-123456": ["Environment"], "i-789012": ["Name"]}
 
+resources = [
+    {"ResourceId": "i-123456", "Tags": {"Name": "AppServer"}},
+    {"ResourceId": "i-789012", "Tags": {"Environment": "Production"}}
+]
+
+required_tags = ["Name", "Environment"]
+
+def check_missing_tags(resources, required_tags):
+    missing_tags = {}
+    for resource in resources:
+        missing = [tag for tag in required_tags if tag not in resource["Tags"]]
+        if missing:
+            missing_tags[resource["ResourceId"]] = missing
+    return missing_tags
+
+print(check_missing_tags(resources, required_tags))
+
 ###############################################################################################################################
