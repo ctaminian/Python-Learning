@@ -156,6 +156,14 @@ print(simulate_metrics(cpu_usage, memory_usage))
 #     ]
 # }
 
+resource = "arn:aws:s3:::my-bucket/*"  
+actions = ["s3:GetObject", "s3:PutObject"]
+
+def generate_iam_policy(resource, actions):
+    return {"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Action": actions, "Resource": resource}]}
+
+print(generate_iam_policy(resource, actions))
+
 ###############################################################################################################################
 
 # 8. Check for Missing Tags
