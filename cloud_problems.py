@@ -104,6 +104,19 @@ print(calculate_cost(prices, usage_hours))
 # Output:
 # ["192.168.1.1 - GET /index.html", "192.168.1.1 - DELETE /file.txt"]
 
+logs = [
+     "192.168.1.1 - GET /index.html",
+     "10.0.0.1 - POST /upload",
+     "192.168.1.1 - DELETE /file.txt"
+]
+
+ip = "192.168.1.1"
+
+def filter_logs(logs, ip):
+    return [log for log in logs if ip in log]
+
+print(filter_logs(logs, ip))
+
 ###############################################################################################################################
 
 # 6. Simulate AWS CloudWatch Metrics
