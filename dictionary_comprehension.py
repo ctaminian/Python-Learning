@@ -34,17 +34,24 @@ doubled_even = {item: nested_dict[item] * 2 if nested_dict[item] % 2 == 0 else n
 
 keys = ['name', 'age', 'city']
 values = ['Alice', 30, 'New York']
-
 key_value = {key: value for key, value in zip(keys, values)}
-print(key_value)
 
 # 7. Given the dictionary:
 # word_counts = {'hello': 5, 'world': 8, 'python': 3, 'comprehension': 7}
 # Create a new dictionary where the keys are the same, but the values are only included if they are greater than 5.
 # Example Output: {'world': 8, 'comprehension': 7}
 
+word_counts = {'hello': 5, 'world': 8, 'python': 3, 'comprehension': 7}
+large_word_counts = {word: word_counts[word] for word in word_counts if word_counts[word] > 5}
+
 # 8. Given a string 'aabbccdd', create a dictionary where the keys are the unique characters, and the values are the count of each character in the string.
 # Example Output: {'a': 2, 'b': 2, 'c': 2, 'd': 2}
 
+letters = "aabbccddd"
+letter_count = {letter: letters.count(letter) for letter in set(letters)}
+
 # 9. Generate a dictionary from 1 to 10 where the keys are the numbers, and the values are lists of their factors.
 # Example Output: {1: [1], 2: [1, 2], 3: [1, 3], ..., 10: [1, 2, 5, 10]}
+
+factors = {num: [i for i in range(1, num + 1) if num % i == 0] for num in range(1, 11)}
+print(factors)
