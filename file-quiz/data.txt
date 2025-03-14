@@ -1,0 +1,4 @@
+Python is an amazing language. 
+It is powerful, yet simple.
+Python enables developers to write code efficiently.
+Simple code is better than complex code.
